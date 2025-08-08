@@ -8,12 +8,14 @@ export default async function handler(req, res) {
     return;
   }
   try {
-    const fetchRes = await fetch(targetUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; VercelProxy/1.0)',
-        'Accept': 'application/json,text/javascript,*/*;q=0.01'
-      }
-    });
+    const response = await fetch(targetUrl, {
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+    'Accept': 'application/json, text/javascript, */*; q=0.01',
+    'Referer': 'https://finance.yahoo.com/',
+    'Origin': 'https://finance.yahoo.com',
+  },
+});
     const text = await fetchRes.text();
     // Mirror content-type
     const ct = fetchRes.headers.get('content-type') || 'text/plain';
